@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from pyvirtualdisplay import Display
 
 __author__ = 'cristhian'
 
@@ -50,6 +51,9 @@ class SettingsBrowser(object):
 
     def set_custom_browser_firefox_in_settingsbrowser(self, browser):
         """ Establecemos el navegador que se crea con las librerias de Selenium2Library para Firefox"""
+        self.display = Display(visible=0, size=(1024, 768))
+        self.display.start()
+
         self._driver = browser
 
     def set_custom_browser_phantomjs(self, browser):
@@ -58,3 +62,4 @@ class SettingsBrowser(object):
 
     def close_browser_firefox(self):
         self._driver.close()
+        self.display.close()
