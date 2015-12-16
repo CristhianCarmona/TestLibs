@@ -27,7 +27,7 @@ class ClassExample:
         elem = driver.find_element_by_name("q")
         elem.send_keys("selenium webdriver")
         elem.send_keys(Keys.RETURN)
-        driver.get_screenshot_as_file("./capturadesdeClassExample.png")
+        #driver.get_screenshot_as_file("./capturadesdeClassExample.png")
         #assert "No results found." not in driver.page_source
         driver.close()
 
