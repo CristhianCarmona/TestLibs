@@ -7,3 +7,4 @@ __author__ = 'cristhian'
 
 URL_NOT_FOUND = 'No se ha encontrado la URL {}'
 LANGUAGE_NOT_FOUND = 'No se ha encontrado el idioma solicitado {}. Los permitidos son {}'
+FIELD_NOT_FOUND = 'No se ha encontrado el campo: {0}'

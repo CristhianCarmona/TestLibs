@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # coding=utf-8
 
+from robot.api import logger
+
 __author__ = 'cristhian'
 
 
@@ -11,17 +13,17 @@ class Setup(object):
     """
     message = "This is a message"
 
-    def __init__(self):
-        self._browser = None
+    def __init__(self, *args):
+        """ Acepta arg desde RIDE """
+        logger.console("*** Numero de argumentos %s ***" % str(len(args)))
+        logger.console("*** Argumentos leidos desde RIDE ***")
+        for arg in args:
+            logger.console("***  %s ***" % arg)
+
+        self.browser = args[0]
 
     def set_browser(self, browser):
-        self._browser = browser
+        self.browser = browser
 
     def get_browser(self):
-        return self._browser
-
-    def imp(self):
-        return self.message
-
-    def imp2(self):
-        return self.message
+        return self.browser
