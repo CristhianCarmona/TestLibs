@@ -7,10 +7,8 @@ __author__ = 'cristhian'
 
 
 class Setup(object):
-    """
-    Esta clase sirve para pasar un browser desde la libreria Selenium2Library a las nuestras
-    permitiendonos compartir el mismo browser por parte de nuestras funciones personalizadas y las definidas.
-    """
+    """ Esta clase sirve para pasar un browser desde la libreria Selenium2Library a las nuestras
+    permitiendonos compartir el mismo browser por parte de nuestras funciones personalizadas y las definidas. """
     message = "This is a message"
 
     def __init__(self, *args):

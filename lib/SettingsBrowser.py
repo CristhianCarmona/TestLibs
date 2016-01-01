@@ -2,12 +2,13 @@
 # coding=utf-8
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from robot.api import logger
 
 __author__ = 'cristhian'
 
 
 class SettingsBrowser(object):
-    """ gestionamos las configuraciones de los navegadores más usados: firefox, chrome y phantomjs"""
+    """ Gestionamos las configuraciones de los navegadores más usados: firefox, chrome y phantomjs"""
 
     def __init__(self):
         self._capabilites = None
@@ -15,7 +16,6 @@ class SettingsBrowser(object):
         self.driver_p = None
 
     def set_configuraciones_navegador(self, tipo_nav):
-        """ funcion que sirve para asignar configuraciones por defecto al navegador """
         if tipo_nav.upper() == 'FIREFOX':
             # Copiamos la configuracion por defecto del navegador
             self._capabilites = DesiredCapabilities.FIREFOX.copy()
@@ -38,9 +38,10 @@ class SettingsBrowser(object):
             print "Updated default settings"
         elif tipo_nav.upper() == 'CHROME':
             print "#TODO gestionamos configuraciones del navegador CHROME"
+            logger.console('#TODO Using browser Chrome')
 
         elif tipo_nav.upper() == 'PHANTOMJS':
-            print "#TODO gestionamos configuraciones del navegador PHANTOMJS"
+            logger.console('#TODO Using browser Phantomjs')
 
         return self._capabilites
 

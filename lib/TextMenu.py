@@ -1,12 +1,17 @@
 #!/usr/bin/python
 # coding=utf-8
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import *
+from selenium.webdriver.support.ui import WebDriverWait
+from robot.api import logger
+from Messages import *
 
 __author__ = 'cristhian'
 
 
 class TextMenu(object):
-
     def __init__(self):
         self.driver = None
 
@@ -22,3 +27,35 @@ class TextMenu(object):
     def clico_subopcion_con_nombre(self, subopcion):
         pass
 
+    def hago_click_sobre_icono_seleccionar_plataforma(self):
+        try:
+            form = self.driver.find_element_by_xpath('//form')
+            barra_busqueda = form.find_element_by_xpath("//input[@id='opcionMenuSelected_mac'] and //span[@class='icono verMas']")
+            barra_busqueda.click()
+            logger.info("hacemos click sobre el boton seleccionar plataforma")
+        except TimeoutException as e:
+            logger.error(PLATFORM_NOT_FOUND.format(str('Busqueda')))
+            raise Exception(e.msg)
+
+    def selecciono_plataforma_con_nombre(self, plataforma):
+        """ clicamos sobre el desplegable y elegimos una plataforma disponible """
+        try:
+            lista_plataformas = ['Windows', 'Android', 'iPhone', 'Mac']
+            assert plataforma in lista_plataformas, PLATFORM_NOT_FOUND.format(plataforma,
+                                                                              str(','.join(lista_plataformas)))
+
+            form = self.driver.find_element_by_xpath('//form')
+            barra_busqueda = form.find_element_by_xpath("//span[contains(@class, 'icono verMas')]")
+
+            # establecemos una espera explícita
+            plataforma_boton = WebDriverWait(self.driver, 3000).until(EC.presence_of_element_located(
+                    (By.XPATH, "//div[contains(@class, 'selectDown sdbus')]"))
+            )
+            plataforma_boton.click()
+            elegir_plataforma = self.driver.find_element_by_xpath("//span[contains(@class, 'txt') and "
+                                                                  "normalize-space(text())='" + plataforma + "']")
+            elegir_plataforma.click()
+            logger.info('selecciono_plataforma_con_nombre WORKS!')
+        except (TimeoutException, NoSuchElementException) as e:
+            logger.error(PLATFORM_NOT_FOUND.format(plataforma, lista_plataformas))
+            raise Exception(e.msg)

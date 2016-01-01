@@ -3,8 +3,9 @@
 
 __author__ = 'cristhian'
 
-""" Clase con mensajes personalizados """
 
-URL_NOT_FOUND = 'No se ha encontrado la URL {}'
-LANGUAGE_NOT_FOUND = 'No se ha encontrado el idioma solicitado {}. Los permitidos son {}'
+URL_NOT_FOUND = 'No se ha encontrado la URL {0}'
+LANGUAGE_NOT_FOUND = 'No se ha encontrado el idioma solicitado {0}. Los permitidos son {1}'
 FIELD_NOT_FOUND = 'No se ha encontrado el campo: {0}'
+PLATFORM_NOT_FOUND = 'La plataforma {0} no existe. Las disponibles son: {1}'
+ELEMENT_NOT_FOUND = 'No se ha encontrado el elemento {0}'
