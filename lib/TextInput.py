@@ -21,24 +21,15 @@ class TextInput(object):
 
     def relleno_el_campo_de_nombre_interno_con_texto(self, nombre_campo_interno, texto):
         """ Rellena con datos el campo de texto buscandolo por el placeholder(texto interno del campo) """
-        try:
-            assert nombre_campo_interno == '', u'El nombre interno del campo debe estar informado'
-            form = self.driver.find_element_by_xpath('//form')
-            textbox = form.find_element_by_xpath('//input[contains(@placeholder, "' + nombre_campo_interno + '")]')
-            textbox.clear()
-            textbox.send_keys(texto)
-            # TODO falta probar
-        except (TimeoutException, NoSuchElementException) as e:
-            logger.error(FIELD_NOT_FOUND.format('Busqueda'))
-            raise Exception(e.msg)
-
+	logger.info('#TODO')	
+	
     def relleno_campo_busqueda_con_el_texto(self, texto):
+        """ Rellena el campo de búsqueda con el texto dado """
         try:
             form = self.driver.find_element_by_xpath('//form')
             campo_busqueda = form.find_element_by_xpath("//input[@id='busqueda']")
             campo_busqueda.clear()
             campo_busqueda.send_keys(str(texto))
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(FIELD_NOT_FOUND.format('Busqueda'))
             raise Exception(e.msg)
@@ -56,7 +47,6 @@ class TextInput(object):
             textbox = label.find_element_by_xpath('./following::input')
             textbox.clear()
             textbox.send_keys(texto)
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(FIELD_NOT_FOUND.format(etiqueta))
             raise Exception(e.msg)

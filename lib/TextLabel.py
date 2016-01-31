@@ -23,21 +23,19 @@ class TextLabel(object):
         try:
             mensaje = self.driver.find_element_by_xpath("//h1")
             assert texto in mensaje.text, "'%s' no coincide con el texto encontrado '%s'" %(texto, mensaje)
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format('Texto: ' + texto))
             raise Exception(e.msg)
 
     def aparece_mensaje_error_mail(self, texto_error):
-        """ Localizo el mensaje de error que devuelve el campo del email"""
+        """ Localiza el mensaje de error que devuelve el campo del email"""
         try:
             label_error = self.driver.find_element_by_xpath("//p[@class='colorRojo']")
             assert texto_error in label_error.text, "Textos no coinciden %s != %s" % (texto_error, label_error.text)
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             fichero = 'email_incorrecto' + str(randint(0, 9999)) + '.png'
             self.driver.get_screenshot_as_file(fichero)
-            # si hay algún error cerramos sesión del usuario logueado
+            # si hay algún error cerramos sesión del usuario logueado para que no afecte al resto de pruebas
             self.driver.get('http://www.portalprogramas.com/comunidad/cerrarSesion')
             logger.error(ELEMENT_NOT_FOUND.format('class: colorRojo'))
             raise Exception('Compruebe captura pantalla con el error: ' + fichero)
@@ -47,22 +45,21 @@ class TextLabel(object):
         try:
             enlace = self.driver.find_element_by_link_text(nombre_link)
             enlace.click()
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format('Link: ' + nombre_link))
             raise Exception(e.msg)
 
     def activo_el_check_con_nombre(self, nombre):
-        """ Activa un check dado su id """
+        """ Activa un check dado su nombre """
         try:
             checkbox = self.driver.find_element_by_name(nombre)
             checkbox.click()
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format('Name: ' + nombre))
             raise Exception(e.msg)
 
     def clico_en_salir(self):
+	""" Cierra sesión de usuario mediante URL """
         try:
             url = 'http://www.portalprogramas.com/comunidad/cerrarSesion'
             self.driver.get(url)
@@ -71,14 +68,13 @@ class TextLabel(object):
             raise Exception(e.msg)
 
     def clico_check_circular_con_texto(self, texto):
-        """ Selecciono un check radio con nombre determinado """
-        print texto
+	logger.info('#TODO')
 
     def selecciono_dia_del_desplegable(self, dia_numero):
-        print dia_numero
+        logger.info('#TODO')
 
     def selecciono_mes_del_desplegable(self, mes_texto):
-        print mes_texto
+        logger.info('#TODO')
 
     def selecciono_anio_del_desplegable(self, anio_numero):
-        print anio_numero
+        logger.info('#TODO')

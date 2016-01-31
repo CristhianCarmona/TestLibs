@@ -35,10 +35,8 @@ class SettingsBrowser(object):
             # Navegador marionette activado o no
             self._capabilites['marionette'] = False
 
-            print "Updated default settings"
         elif tipo_nav.upper() == 'CHROME':
-            print "#TODO gestionamos configuraciones del navegador CHROME"
-            logger.console('#TODO Using browser Chrome')
+            logger.console('#TODO Using broowser Chrome')
 
         elif tipo_nav.upper() == 'PHANTOMJS':
             logger.console('#TODO Using browser Phantomjs')

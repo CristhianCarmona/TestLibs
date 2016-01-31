@@ -21,16 +21,17 @@ class Buttons(object):
         self.driver = driver
 
     def clico_sobre_icono_lupa(self):
+        """ Clica sobre el botón con icono lupa """
         try:
             form = self.driver.find_element_by_xpath('//form')
             barra_busqueda = form.find_element_by_xpath("//input[@class='botonBuscar busb']")
             barra_busqueda.click()
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format('Lupa/Buscar'))
             raise Exception(e.msg)
 
     def clico_sobre_boton_descargar(self):
+        """ Clica directamente sobre el botón descargar """
         try:
             area_detalle = self.driver.find_element_by_xpath("//div[@class='listadoElementos programas grande']")
             area_detalle.click()
@@ -43,7 +44,6 @@ class Buttons(object):
         try:
             boton_sesion = self.driver.find_element_by_xpath("//span[@class='icono iniciarSesion']")
             boton_sesion.click()
-            # FUNCIONA
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format('Icono iniciar sesion'))
             raise Exception(e.msg)
@@ -54,7 +54,6 @@ class Buttons(object):
             boton = self.driver.find_element_by_xpath("//input[@value='" + nombre_boton + "']")
             boton.submit()
             time.sleep(1)
-            # self.driver.get_screenshot_as_file("validacionmailerror.png")
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format('Boton: ' + nombre_boton))
             raise Exception(e.msg)
