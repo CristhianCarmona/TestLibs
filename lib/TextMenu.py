@@ -29,7 +29,7 @@ class TextMenu(object):
 	""" Hace click directamente sobre el icono de los sistemas operativos de la barra de búsqueda"""
         try:
             form = self.driver.find_element_by_xpath('//form')
-            barra_busqueda = form.find_element_by_xpath("//input[@id='opcionMenuSelected_mac'] and //span[@class='icono verMas']")
+            barra_busqueda = form.find_element_by_xpath(".//input[@id='opcionMenuSelected_mac'] and //span[@class='icono verMas']")
             barra_busqueda.click()
         except TimeoutException as e:
             logger.error(PLATFORM_NOT_FOUND.format(str('Busqueda')))
@@ -43,7 +43,7 @@ class TextMenu(object):
                                                                               str(','.join(lista_plataformas)))
 
             form = self.driver.find_element_by_xpath('//form')
-            barra_busqueda = form.find_element_by_xpath("//span[contains(@class, 'icono verMas')]")
+            barra_busqueda = form.find_element_by_xpath(".//span[contains(@class, 'iconoMenu verMas')]")
 
             # establecemos una espera explícita
             plataforma_boton = WebDriverWait(self.driver, 3000).until(EC.presence_of_element_located(

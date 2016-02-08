@@ -29,7 +29,7 @@ class Common(object):
         """ Localiza mensaje que aparece justo después de la barra de búsqueda sea igual al que buscamos """
         try:
             # cabecera = self.driver.find_element_by_xpath("//div[contains(@class, 'grid_12 tituloSEO inner mini vertical')]/descendant::h1")
-            cabecera = self.driver.find_element_by_xpath("//div[@class='inner mini']/descendant::h1")
+            cabecera = self.driver.find_element_by_xpath("//div[@class='inner mini mobileMarginTop']/descendant::h1")
             assert mensaje.lower() in cabecera.text.lower(), ELEMENT_NOT_FOUND.format(mensaje)
         except (TimeoutException, NoSuchElementException) as e:
             logger.error(ELEMENT_NOT_FOUND.format(mensaje))
